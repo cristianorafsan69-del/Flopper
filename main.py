@@ -2,10 +2,16 @@ import discord
 from discord.ext import commands
 import hashlib
 import random
+import json
 
-# ---- CONFIG ----
-TOKEN = "YOUR_DISCORD_BOT_TOKEN"   # put your bot token here
-SERVER_SEED = "my_server_secret_seed"  # keep this secret (replace with your own)
+# ---- LOAD TOKEN FROM CONFIG ----
+with open("config.json", "r") as f:
+    config = json.load(f)
+
+TOKEN = config["TOKEN"]
+
+# ---- SET SERVER SEED IN CODE ----
+SERVER_SEED = "my_server_secret_seed"  # replace with your secret seed
 
 # ---- DISCORD INTENTS ----
 intents = discord.Intents.default()
